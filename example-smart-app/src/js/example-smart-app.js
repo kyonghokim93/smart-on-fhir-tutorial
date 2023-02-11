@@ -19,7 +19,7 @@
                               'http://loinc.org|8480-6', 'http://loinc.org|2085-9',
                               'http://loinc.org|2089-1', 'http://loinc.org|55284-4', 
                               'http://loinc.org|2093-3', 'http://loinc.org|3141-9',
-                              'http://loinc.org|39156-5']
+                              'http://loinc.org|39156-5', 'http://loinc.org|5792-7']
                       }
                     }
                   });
@@ -46,7 +46,7 @@
 
           var height = byCodes('8302-2');
           var weight = byCodes('3141-9');
-          var bmi = byCode('39156-5');
+          var bmi = byCodes('39156-5');
           
           var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
           var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
@@ -54,6 +54,8 @@
           var ldl = byCodes('2089-1');
           
           var choles = byCodes('2093-3');
+          var glucose = byCodes('5792-7');
+          
           //let cholesStr = JSON.stringify(choles, null, 4)
           //console.log("***************choles=   " + cholesStr);
 
@@ -75,6 +77,8 @@
           
           p.choles = getQuantityValueAndUnit(choles[0]);
 
+          p.glucose = getQuantityValueAndUnit(glucose[0]);
+          
           if (typeof systolicbp != 'undefined')  {
             p.systolicbp = systolicbp;
           }
@@ -112,7 +116,8 @@
       diastolicbp: {value: ''},
       ldl: {value: ''},
       hdl: {value: ''},
-      choles: {value: ''}
+      choles: {value: ''},
+      glucose: {value: ''}
     };
   }
 
@@ -171,6 +176,7 @@
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
     $('#choles').html(p.choles);
+    $('#glucose').html(p.glucose);
   };
 
 })(window);
