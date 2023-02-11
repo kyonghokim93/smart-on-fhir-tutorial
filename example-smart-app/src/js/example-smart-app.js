@@ -19,7 +19,7 @@
                               'http://loinc.org|8480-6', 'http://loinc.org|2085-9',
                               'http://loinc.org|2089-1', 'http://loinc.org|55284-4', 
                               'http://loinc.org|2093-3', 'http://loinc.org|3141-9',
-                              'http://loinc.org|39156-5', 'http://loinc.org|5792-7']
+                              'http://loinc.org|39156-5', 'http://loinc.org|5792-7' ]
                       }
                     }
                   });
@@ -29,7 +29,12 @@
 
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
-          var address = patient.address[0].text;
+          //var address = patient.address[0].text;
+          let tempAdd1 = JSON.stringify(patient.address[0], null, 4); // (Optional) beautiful indented output.
+          console.log(tempAdd1);
+          let tempAdd2 = JSON.stringify(patient.address, null, 4); // (Optional) beautiful indented output.
+          console.log(tempAdd2);
+          
           var gender = patient.gender;
           var identifier = patient.identifier[0].value;
           console.log(identifier);
@@ -75,7 +80,7 @@
           //console.log("***************address=   " + addressP);
           
           p.age = getAge(patient.birthDate);
-          p.address = address;
+          //p.address = address;
           p.gender = gender;
           p.identifier = identifier;
           p.fname = fname;
@@ -122,7 +127,7 @@
       height: {value: ''},
       weight: {value: ''},
       bmi: {value: ''},
-      address: {value: ''},
+      //address: {value: ''},
       identifier: {value: ''},
       
       systolicbp: {value: ''},
@@ -184,7 +189,7 @@
     $('#height').html(p.height);
     $('#weight').html(p.weight);
     $('#bmi').html(p.bmi);
-    $('#address').html(p.address);
+    //$('#address').html(p.address);
     $('#identifier').html(p.identifier);
     
     $('#systolicbp').html(p.systolicbp);
