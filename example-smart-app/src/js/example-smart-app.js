@@ -65,8 +65,8 @@
      
           p.birthdate = patient.birthDate;
           
-          //let birthD = JSON.stringify(patient.birthDate, null, 4)
-          //console.log("***************birthD=   " + birthD);
+          let addressP = JSON.stringify(address, null, 4)
+          console.log("***************address=   " + addressP);
           
           p.age = getAge(patient.birthDate);
           p.address = address;
