@@ -28,7 +28,9 @@
 
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
+          var address = patient.address;
           var gender = patient.gender;
+          var identifier = patient.identifier;
           console.log("testing")
           let tempStr = JSON.stringify(obv, null, 4); // (Optional) beautiful indented output.
           console.log(tempStr)
@@ -67,13 +69,14 @@
           //console.log("***************birthD=   " + birthD);
           
           p.age = getAge(patient.birthDate);
+          p.address = address;
           p.gender = gender;
           p.fname = fname;
           p.lname = lname;
           p.height = getQuantityValueAndUnit(height[0]);
           p.weight = getQuantityValueAndUnit(weight[0]);
           p.bmi = getQuantityValueAndUnit(bmi[0]);
-          
+          p.identifier = identifier;
           
           p.choles = getQuantityValueAndUnit(choles[0]);
 
@@ -112,6 +115,9 @@
       height: {value: ''},
       weight: {value: ''},
       bmi: {value: ''},
+      address: {value: ''},
+      identifier: {value: ''},
+      
       systolicbp: {value: ''},
       diastolicbp: {value: ''},
       ldl: {value: ''},
@@ -171,6 +177,9 @@
     $('#height').html(p.height);
     $('#weight').html(p.weight);
     $('#bmi').html(p.bmi);
+    $('#address').html(p.address);
+    $('#identifier').html(p.identifier);
+    
     $('#systolicbp').html(p.systolicbp);
     $('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
