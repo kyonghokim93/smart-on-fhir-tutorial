@@ -17,8 +17,8 @@
                       code: {
                         $or: ['http://loinc.org|8302-2', 'http://loinc.org|8462-4',
                               'http://loinc.org|8480-6', 'http://loinc.org|2085-9',
-                              'http://loinc.org|2089-1', 'http://loinc.org|55284-4'
-                              'http://loinc.org|3141-9']
+                              'http://loinc.org|2089-1', 'http://loinc.org|55284-4', 
+                              'http://loinc.org|2093-3']
                       }
                     }
                   });
@@ -28,6 +28,11 @@
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
+          console.log("testing")
+          let tempStr = JSON.stringify(obv, null, 4); // (Optional) beautiful indented output.
+          console.log(tempStr)
+          
+          var choles = '';
 
           var fname = '';
           var lname = '';
@@ -38,11 +43,14 @@
           }
 
           var height = byCodes('8302-2');
-          var weight = byCodes('3141-9');
           var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
           var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
           var hdl = byCodes('2085-9');
           var ldl = byCodes('2089-1');
+          
+          var choles = byCodes('2093-3');
+          let cholesStr = JSON.stringify(choles, null, 4)
+          console.log("***************choles=   " + cholesStr);
 
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
@@ -50,7 +58,8 @@
           p.fname = fname;
           p.lname = lname;
           p.height = getQuantityValueAndUnit(height[0]);
-          p.weight = getQuantityValueAndUnit(weight[0]);
+          
+          p.choles = getQuantityValueAndUnit(choles[0]);
 
           if (typeof systolicbp != 'undefined')  {
             p.systolicbp = systolicbp;
@@ -82,11 +91,11 @@
       gender: {value: ''},
       birthdate: {value: ''},
       height: {value: ''},
-      weight: {value: ''},
       systolicbp: {value: ''},
       diastolicbp: {value: ''},
       ldl: {value: ''},
       hdl: {value: ''},
+      choles: {value: ''}
     };
   }
 
@@ -126,12 +135,11 @@
     $('#gender').html(p.gender);
     $('#birthdate').html(p.birthdate);
     $('#height').html(p.height);
-    $('#weight').html(p.weight);
-    
     $('#systolicbp').html(p.systolicbp);
     $('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
+    $('#choles').html(p.choles);
   };
 
 })(window);
