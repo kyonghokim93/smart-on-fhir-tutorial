@@ -29,11 +29,15 @@
 
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
-          //var address = patient.address[0].text;
-          let tempAdd1 = JSON.stringify(patient.address[0], null, 4); // (Optional) beautiful indented output.
-          console.log(tempAdd1);
-          let tempAdd2 = JSON.stringify(patient.address, null, 4); // (Optional) beautiful indented output.
-          console.log(tempAdd2);
+          var address1 = patient.address[0].line;
+          var address2 = patient.address[0].city;
+          var address3 = patient.address[0].state;
+          var address4 = patient.address[0].postalCode;
+          var address = address1.concat(" ", address2, " ", address3, " ", address4);
+          //let tempAdd1 = JSON.stringify(patient.address[0], null, 4); // (Optional) beautiful indented output.
+          //console.log(tempAdd1);
+          //let tempAdd2 = JSON.stringify(patient.address, null, 4); // (Optional) beautiful indented output.
+          //console.log(tempAdd2);
           
           var gender = patient.gender;
           var identifier = patient.identifier[0].value;
@@ -80,7 +84,7 @@
           //console.log("***************address=   " + addressP);
           
           p.age = getAge(patient.birthDate);
-          //p.address = address;
+          p.address = address;
           p.gender = gender;
           p.identifier = identifier;
           p.fname = fname;
@@ -127,7 +131,7 @@
       height: {value: ''},
       weight: {value: ''},
       bmi: {value: ''},
-      //address: {value: ''},
+      address: {value: ''},
       identifier: {value: ''},
       
       systolicbp: {value: ''},
@@ -189,7 +193,7 @@
     $('#height').html(p.height);
     $('#weight').html(p.weight);
     $('#bmi').html(p.bmi);
-    //$('#address').html(p.address);
+    $('#address').html(p.address);
     $('#identifier').html(p.identifier);
     
     $('#systolicbp').html(p.systolicbp);
