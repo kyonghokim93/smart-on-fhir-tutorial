@@ -29,11 +29,12 @@
 
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
-          var address1 = patient.address[0].line;
-          var address2 = patient.address[0].city;
-          var address3 = patient.address[0].state;
-          var address4 = patient.address[0].postalCode;
-          var address = address1.concat(" ", address2, " ", address3, " ", address4);
+          //var address1 = patient.address[0].line;
+          //var address2 = patient.address[0].city;
+          //var address3 = patient.address[0].state;
+          //var address4 = patient.address[0].postalCode;
+          var address = patient.address[0].line.concat(" ", patient.address[0].city, " ", patient.address[0].state, 
+                                                       " ", patient.address[0].postalCode, " ", patient.address[0].country);
           //let tempAdd1 = JSON.stringify(patient.address[0], null, 4); // (Optional) beautiful indented output.
           //console.log(tempAdd1);
           //let tempAdd2 = JSON.stringify(patient.address, null, 4); // (Optional) beautiful indented output.
