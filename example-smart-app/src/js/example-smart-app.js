@@ -31,9 +31,11 @@
           var address = patient.address;
           var gender = patient.gender;
           var identifier = patient.identifier;
-          console.log("testing")
-          let tempStr = JSON.stringify(obv, null, 4); // (Optional) beautiful indented output.
-          console.log(tempStr)
+          console.log(identifier);
+          console.log(address);
+          console.log(gender);
+          //let tempStr = JSON.stringify(obv, null, 4); // (Optional) beautiful indented output.
+          //console.log(tempStr)
           
           var choles = '';
 
@@ -45,6 +47,8 @@
             fname = patient.name[0].given.join(' ');
             lname = patient.name[0].family.join(' ');
           }
+          
+          
 
           var height = byCodes('8302-2');
           var weight = byCodes('3141-9');
@@ -65,18 +69,19 @@
      
           p.birthdate = patient.birthDate;
           
-          let addressP = JSON.stringify(address, null, 4)
-          console.log("***************address=   " + addressP);
+          //let addressP = JSON.stringify(address, null, 4)
+          //console.log("***************address=   " + addressP);
           
           p.age = getAge(patient.birthDate);
           p.address = address;
           p.gender = gender;
+          p.identifier = identifier;
           p.fname = fname;
           p.lname = lname;
           p.height = getQuantityValueAndUnit(height[0]);
           p.weight = getQuantityValueAndUnit(weight[0]);
           p.bmi = getQuantityValueAndUnit(bmi[0]);
-          p.identifier = identifier;
+          
           
           p.choles = getQuantityValueAndUnit(choles[0]);
 
