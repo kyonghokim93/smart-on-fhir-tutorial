@@ -54,9 +54,10 @@
           //console.log("***************choles=   " + cholesStr);
 
           var p = defaultPatient();
+     
           p.birthdate = patient.birthDate;
           
-          let birthD = JSON.stringify(choles, null, 4)
+          let birthD = JSON.stringify(patient.birthDate, null, 4)
           console.log("***************birthD=   " + birthD);
           
           p.age = getAge(patient.birthDate);
