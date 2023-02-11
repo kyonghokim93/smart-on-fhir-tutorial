@@ -29,8 +29,8 @@
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
           //console.log("testing")
-          //let tempStr = JSON.stringify(obv, null, 4); // (Optional) beautiful indented output.
-          //console.log(tempStr)
+          let tempStr = JSON.stringify(obv, null, 4); // (Optional) beautiful indented output.
+          console.log(tempStr)
           
           var choles = '';
 
