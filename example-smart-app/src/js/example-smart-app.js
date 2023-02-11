@@ -28,9 +28,9 @@
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
-          console.log("testing")
-          let tempStr = JSON.stringify(obv, null, 4); // (Optional) beautiful indented output.
-          console.log(tempStr)
+          //console.log("testing")
+          //let tempStr = JSON.stringify(obv, null, 4); // (Optional) beautiful indented output.
+          //console.log(tempStr)
           
           var choles = '';
 
@@ -50,11 +50,15 @@
           var ldl = byCodes('2089-1');
           
           var choles = byCodes('2093-3');
-          let cholesStr = JSON.stringify(choles, null, 4)
-          console.log("***************choles=   " + cholesStr);
+          //let cholesStr = JSON.stringify(choles, null, 4)
+          //console.log("***************choles=   " + cholesStr);
 
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
+          
+          let birthD = JSON.stringify(choles, null, 4)
+          console.log("***************birthD=   " + birthD);
+          
           p.age = getAge(patient.birthDate);
           p.gender = gender;
           p.fname = fname;
