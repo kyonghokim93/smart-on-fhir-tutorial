@@ -41,7 +41,7 @@
           var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
           var hdl = byCodes('2085-9');
           var ldl = byCodes('2089-1');
-          var totalCholesterol = byCodes('2093-3');
+          var temperature = byCodes('8310-5');
 
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
@@ -60,7 +60,7 @@
 
           p.hdl = getQuantityValueAndUnit(hdl[0]);
           p.ldl = getQuantityValueAndUnit(ldl[0]);
-          p.totalCholesterol = getQuantityValueAndUnit(totalCholesterol[0]);
+          p.temperature = getQuantityValueAndUnit(temperature[0]);
 
           ret.resolve(p);
         });
@@ -85,7 +85,7 @@
       diastolicbp: {value: ''},
       ldl: {value: ''},
       hdl: {value: ''},
-      totalCholesterol: {value: ''},
+      temperature: {value: ''},
     };
   }
 
@@ -129,7 +129,7 @@
     $('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
-    $('#totalCholesterol').html(p.totalCholesterol);
+    $('#temperature').html(p.temperature);
   };
 
 })(window);
