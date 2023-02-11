@@ -60,7 +60,7 @@
 
           p.hdl = getQuantityValueAndUnit(hdl[0]);
           p.ldl = getQuantityValueAndUnit(ldl[0]);
-          p.temperature = getQuantityValueAndUnit(temperature);
+          p.temperature = getQuantityValueAndUnit(temperature[0]);
 
           ret.resolve(p);
         });
