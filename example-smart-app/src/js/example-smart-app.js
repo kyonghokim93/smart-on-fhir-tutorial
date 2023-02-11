@@ -36,6 +36,7 @@
 
           var fname = '';
           var lname = '';
+          var age = 0;
 
           if (typeof patient.name[0] !== 'undefined') {
             fname = patient.name[0].given.join(' ');
@@ -54,6 +55,7 @@
 
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
+          p.age = getAge(patient.birthDate);
           p.gender = gender;
           p.fname = fname;
           p.lname = lname;
@@ -90,6 +92,7 @@
       lname: {value: ''},
       gender: {value: ''},
       birthdate: {value: ''},
+      age: {value: ''},
       height: {value: ''},
       systolicbp: {value: ''},
       diastolicbp: {value: ''},
@@ -99,6 +102,17 @@
     };
   }
 
+  function getAge(dateString) {
+    var today = new Date();
+    var birthDate = new Date(dateString);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
+}
+  
   function getBloodPressureValue(BPObservations, typeOfPressure) {
     var formattedBPObservations = [];
     BPObservations.forEach(function(observation){
@@ -134,6 +148,7 @@
     $('#lname').html(p.lname);
     $('#gender').html(p.gender);
     $('#birthdate').html(p.birthdate);
+    $('#age').html(p.age); 
     $('#height').html(p.height);
     $('#systolicbp').html(p.systolicbp);
     $('#diastolicbp').html(p.diastolicbp);
