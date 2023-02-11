@@ -28,9 +28,9 @@
 
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
-          var address = patient.address;
+          var address = patient.address[0].text.join(' ');
           var gender = patient.gender;
-          var identifier = patient.identifier;
+          var identifier = patient.identifier[0].value.join(' ');
           console.log(identifier);
           console.log(address);
           console.log(gender);
@@ -38,6 +38,7 @@
           //console.log(tempStr)
           
           var choles = '';
+          var glucose = '';
 
           var fname = '';
           var lname = '';
