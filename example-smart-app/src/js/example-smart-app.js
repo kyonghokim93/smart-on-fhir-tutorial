@@ -18,7 +18,7 @@
                         $or: ['http://loinc.org|8302-2', 'http://loinc.org|8462-4',
                               'http://loinc.org|8480-6', 'http://loinc.org|2085-9',
                               'http://loinc.org|2089-1', 'http://loinc.org|55284-4', 
-                              'http://loinc.org|2093-3', 'http://loinc.org|3141-9']
+                              'http://loinc.org|2093-3' ]
                       }
                     }
                   });
@@ -44,7 +44,7 @@
           }
 
           var height = byCodes('8302-2');
-          var weight = byCodes('3141-9');
+          //var weight = byCodes('3141-9');
           var bmi = 0;
           var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
           var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
@@ -67,8 +67,8 @@
           p.fname = fname;
           p.lname = lname;
           p.height = getQuantityValueAndUnit(height[0]);
-          p.weight = getQuantityValueAndUnit(weight[0]);
-          p.bmi = weight/(height/100)**2);
+          //p.weight = getQuantityValueAndUnit(weight[0]);
+          //p.bmi = weight/(height/100)**2);
           
           
           p.choles = getQuantityValueAndUnit(choles[0]);
@@ -104,7 +104,7 @@
       birthdate: {value: ''},
       age: {value: ''},
       height: {value: ''},
-      weight: {value: ''},
+      //weight: {value: ''},
       bmi: {value: ''},
       systolicbp: {value: ''},
       diastolicbp: {value: ''},
@@ -162,7 +162,7 @@
     $('#birthdate').html(p.birthdate);
     $('#age').html(p.age); 
     $('#height').html(p.height);
-    $('#weight').html(p.weight);
+    //$('#weight').html(p.weight);
     $('#bmi').html(p.bmi);
     
     $('#systolicbp').html(p.systolicbp);
